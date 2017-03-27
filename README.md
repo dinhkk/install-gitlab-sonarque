@@ -35,4 +35,7 @@
 
 ##4. References
 
-https://docs.sonarqube.org/display/SONAR/Installing+the+Server
+1. https://docs.sonarqube.org/display/SONAR/Documentation
+2. https://about.gitlab.com/downloads/#centos7
+3. 
+4. 
