@@ -45,7 +45,7 @@ Sonarqube requires minimum 2G RAM for installing and running.
  
  Now go to the url : http://localhost:9000 you will see the homepage of sonarque
  
-**1.3. Install SonarPHP plugins **
+**1.3. Install SonarPHP plugins**
 
 The SonarPHP plugins will analyze your php code and display the result on a statistic.   
 You can find the plugins for your programming language [here](https://docs.sonarqube.org/display/PLUG/Plugin+Library)
@@ -85,11 +85,36 @@ Then go to the root folder of project and run :
 Go to the http://ip:9000 you should see the new project on sonarqube  now.
 
 ## 2.Install Gitlab
+Install gitlab on centos 7
 
-> Install gitlab on centos 7
+```
+#1. Install and configure the necessary dependencies
+sudo yum install curl policycoreutils openssh-server openssh-clients
+sudo systemctl enable sshd
+sudo systemctl start sshd
+sudo yum install postfix
+sudo systemctl enable postfix
+sudo systemctl start postfix
+sudo firewall-cmd --permanent --add-service=http
+sudo systemctl reload firewalld
+
+#2. Add the GitLab package server and install the package
+curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | sudo bash
+sudo yum install gitlab-ce
+
+#3. Configure and start GitLab
+sudo gitlab-ctl reconfigure
+```
 
 ## 3.Install sonar gitlab plugin
 
+- [x] [Download gitlab plugin](https://github.com/gabrie-allaigre/sonar-gitlab-plugin/releases/download/2.0.0-rc1/sonar-gitlab-plugin-2.0.0-rc1.jar)
+- [x] Restart sonarquube
+```
+wget -P /var/www/sonarqube-5.6.6/extensions/plugins/ https://github.com/gabrie-allaigre/sonar-gitlab-plugin/releases/download/2.0.0-rc1/sonar-gitlab-plugin-2.0.0-rc1.jar
+
+bash /var/www/sonarqube-5.6.6/bin/linux-x86-64/sonar.sh restart 
+```
 
 ## 4.References
 
