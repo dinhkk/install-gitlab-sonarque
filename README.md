@@ -67,6 +67,22 @@ Commands :
 ```
 wget -P /var/www/ https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.0.0.702-linux.zip
 ```
+Change config file: /var/www/sonar-scanner-3.0.0.702-linux/conf/sonar-scanner.properties
+On this file you need to correct the following information: database user, database pass and sonarqube url.
+
+Create new file: sonar-project.properties in the root folder of php project. Please download [sonarqube sample projects](https://github.com/SonarSource/sonar-examples) for more details. 
+>sonar.projectKey=my:project <br>
+>sonar.projectName=My project <br>
+>sonar.projectVersion=1.0 <br>
+>sonar.sources=.
+
+Then go to the root folder of project and run :
+
+```
+/var/www/sonar-scanner-3.0.0.702-linux/bin/sonar-scanner
+```
+
+Go to the http://ip:9000 you should see the new project on sonarqube  now.
 
 ## 2.Install Gitlab
 
@@ -80,4 +96,5 @@ wget -P /var/www/ https://sonarsource.bintray.com/Distribution/sonar-scanner-cli
 1. https://docs.sonarqube.org/display/SONAR/Documentation
 2. https://about.gitlab.com/downloads/#centos7
 3. https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner
-4. https://github.com/gabrie-allaigre/sonar-gitlab-plugin
+4. https://github.com/SonarSource/sonar-examples
+5. https://github.com/gabrie-allaigre/sonar-gitlab-plugin
