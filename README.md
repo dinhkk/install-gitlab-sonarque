@@ -9,6 +9,7 @@
 Sonarqube requires minimum 2G RAM for installing and running.
 
 **1.1. Install java 1.8**
+
  - [x] Download the file: jdk-8u121-linux-x64.rpm here [Java JDK 1.8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
  - [x] After we go to above link, click on "Accept License Agreement" and copy the download url of the file: **jdk-8u121-linux-x64.rpm**
 - [x] Install Java jdk with rpm by running following commands as **root**
@@ -18,9 +19,17 @@ Sonarqube requires minimum 2G RAM for installing and running.
   rpm -ivh jdk-8u121-linux-x64.rpm
 ```
 - [x] After running above commands, Java jdk 1.8 will be installed
-**1.2. Install Sonarqube**
- - [x] 
 
+**1.2. Install Sonarqube**
+ - [x] [Download sonarqube 5.6](https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-5.6.6.zip)
+ - [x] Extract file zip sonarqube-5.6.6.zip
+ - [x] Change database connection settings, [check here](https://docs.sonarqube.org/display/SONAR/Installing+the+Server#InstallingtheServer-installingDatabaseInstallingtheDatabase)
+ - [x] Run following command to start Sonarqube
+ ```
+ bash sonarqube-path/bin/linux-x86-64/sonar.sh start
+ ```
+ **Note** : sonarqube-path is the path of Sonarqube after extracting the file sonarqube-5.6.6.zip
+ - [x] Sonarqube should be started now
 **1.3. Install Sonarqube plugins**
 
 **1.4. Usage of sonarqube scanner**
