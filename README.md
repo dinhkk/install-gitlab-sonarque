@@ -63,6 +63,11 @@ bash /var/www/sonarqube-5.6.6/bin/linux-x86-64/sonar.sh restart
 - [x] Declare configurations for sonarqube scanner on your php project
 - [x] Start running scanner
 
+Commands :
+```
+wget -P /var/www/ https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.0.0.702-linux.zip
+```
+
 ## 2.Install Gitlab
 
 > Install gitlab on centos 7
