@@ -57,7 +57,11 @@ bash /var/www/sonarqube-5.6.6/bin/linux-x86-64/sonar.sh restart
 ```
 
 **1.4. Install and run sonarqube scanner**
-
+- [x] Download the sonarqube scanner zip file [here](https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.0.0.702-linux.zip)
+- [x] Extract file sonar-scanner-cli-3.0.0.702-linux.zip
+- [x] Change sonarqube scanner configuration 
+- [x] Declare configurations for sonarqube scanner on your php project
+- [x] Start running scanner
 
 ## 2.Install Gitlab
 
@@ -70,5 +74,5 @@ bash /var/www/sonarqube-5.6.6/bin/linux-x86-64/sonar.sh restart
 
 1. https://docs.sonarqube.org/display/SONAR/Documentation
 2. https://about.gitlab.com/downloads/#centos7
-3. 
-4. 
+3. https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner
+4. https://github.com/gabrie-allaigre/sonar-gitlab-plugin
