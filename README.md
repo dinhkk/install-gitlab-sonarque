@@ -26,25 +26,37 @@ Sonarqube requires minimum 2G RAM for installing and running.
  - [x] Extract file zip sonarqube-5.6.6.zip
  - [x] Change database connection settings, [check here](https://docs.sonarqube.org/display/SONAR/Installing+the+Server#InstallingtheServer-installingDatabaseInstallingtheDatabase)
  - [x] Run command to start Sonarqube
+ 
+ You can find settings on the file : /var/www/sonarqube-5.6.6/conf/sonar.properties
+
+>sonar.jdbc.username=sonarqube <br>
+>sonar.jdbc.password=mypassword <br>
+>sonar.jdbc.url=jdbc:postgresql://localhost/sonarqube
+
  Commands:
  ```
  cd /var/www/
  wget https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-5.6.6.zip
  unzip sonarqube-5.6.6.zip
+ #after changing db setting on sonar.properties 
  bash /var/www/sonarqube-5.6.6/bin/linux-x86-64/sonar.sh start
  ```
  - [x] Sonarqube should be started now
+ 
+ Now go to the url : http://localhost:9000 you will see the homepage of sonarque
  
 **1.3. Install SonarPHP plugins **
 
 The SonarPHP plugins will analyze your php code and display the result on a statistic.   
 You can find the plugins for your programming language [here](https://docs.sonarqube.org/display/PLUG/Plugin+Library)
+
 Commands :
 ```
 wget -P /var/www/sonarqube-5.6.6/extensions/plugins/ https://sonarsource.bintray.com/Distribution/sonar-php-plugin/sonar-php-plugin-2.10.0.2087.jar
+bash /var/www/sonarqube-5.6.6/bin/linux-x86-64/sonar.sh restart
 ```
 
-**1.4. Usage of sonarqube scanner**
+**1.4. Install and run sonarqube scanner**
 
 
 ## 2.Install Gitlab
