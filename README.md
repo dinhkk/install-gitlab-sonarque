@@ -107,7 +107,7 @@ sudo gitlab-ctl reconfigure
 ```
 
 ## 3.Install sonar gitlab plugin
-
+**3.1 Install gitlab runner**
 - [x] [Download gitlab plugin](https://github.com/gabrie-allaigre/sonar-gitlab-plugin/releases/download/2.0.0-rc1/sonar-gitlab-plugin-2.0.0-rc1.jar)
 - [x] Restart sonarquube
 ```
@@ -116,10 +116,11 @@ wget -P /var/www/sonarqube-5.6.6/extensions/plugins/ https://github.com/gabrie-a
 bash /var/www/sonarqube-5.6.6/bin/linux-x86-64/sonar.sh restart 
 ```
 
-## 4.References
+## 3.References
 
 1. https://docs.sonarqube.org/display/SONAR/Documentation
 2. https://about.gitlab.com/downloads/#centos7
 3. https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner
 4. https://github.com/SonarSource/sonar-examples
 5. https://github.com/gabrie-allaigre/sonar-gitlab-plugin
+6. https://docs.gitlab.com/runner/
