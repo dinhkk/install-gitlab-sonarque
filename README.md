@@ -105,15 +105,54 @@ sudo yum install gitlab-ce
 #3. Configure and start GitLab
 sudo gitlab-ctl reconfigure
 ```
+Now go to http://ip you will see gitlab now.
 
-## 3.Install sonar gitlab plugin
-**3.1 Install gitlab runner**
+## 3.Install gitlab runner and sonar gitlab plugin
+**3.1 Install sonar gitlab plugin**
 - [x] [Download gitlab plugin](https://github.com/gabrie-allaigre/sonar-gitlab-plugin/releases/download/2.0.0-rc1/sonar-gitlab-plugin-2.0.0-rc1.jar)
 - [x] Restart sonarquube
 ```
 wget -P /var/www/sonarqube-5.6.6/extensions/plugins/ https://github.com/gabrie-allaigre/sonar-gitlab-plugin/releases/download/2.0.0-rc1/sonar-gitlab-plugin-2.0.0-rc1.jar
 
 bash /var/www/sonarqube-5.6.6/bin/linux-x86-64/sonar.sh restart 
+```
+**3.2 Install gitlab runner**
+```
+# For RHEL/CentOS
+curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-ci-multi-runner/script.rpm.sh | sudo bash
+sudo yum install gitlab-ci-multi-runner
+
+sudo gitlab-ci-multi-runner register
+
+Please enter the gitlab-ci coordinator URL (e.g. https://gitlab.com )
+http://ip
+Please enter the gitlab-ci token for this runner
+xxx
+Please enter the gitlab-ci description for this runner
+my-runner
+INFO[0034] fcf5c619 Registering runner... succeeded
+Please enter the executor: shell, docker, docker-ssh, ssh?
+shell
+```
+**32 How to use gitlab runner with sonarqube
+- [x] Create new file .gitlab-ci.yml in the root folder of php project
+- [x] Starting using gitlab plugins
+
+Create .gitlab-ci.yml :
+```
+before_script:
+  - create-sonar-php
+sonarqube_preview:
+  script:
+    - sonar-scanner -Dgpg.sign=false -Dsonar.host.url=http://ip:9000 -Dsonar.gitlab.project_id=$CI_PROJECT_PATH -Dsonar.analysis.mode=preview -Dsonar.issuesReport.console.enable=true -Dsonar.gitlab.commit_sha=$CI_BUILD_REF -Dsonar.gitlab.ref_name=$CI_BUILD_REF_NAME
+  stage: test
+
+sonarqube:
+  script:
+    - sonar-scanner -Dgpg.sign=false -Dsonar.host.url=http://ip:9000
+  stage: test
+  only:
+    - master
 ```
 
 ## 3.References
@@ -123,4 +162,5 @@ bash /var/www/sonarqube-5.6.6/bin/linux-x86-64/sonar.sh restart
 3. https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner
 4. https://github.com/SonarSource/sonar-examples
 5. https://github.com/gabrie-allaigre/sonar-gitlab-plugin
-6. https://docs.gitlab.com/runner/
+6. https://docs.gitlab.com/runner/install/linux-repository.html
+7. https://docs.gitlab.com/ce/ci/yaml/README.html
