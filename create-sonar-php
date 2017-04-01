@@ -1,0 +1,33 @@
+#!/bin/bash
+echo "who am i"
+echo "$USER"
+echo "path process"
+pwd
+echo "project name"
+echo ${CI_PROJECT_ID};
+#echo "create new file"
+
+truncate -s 0 ./sonar-project.properties
+
+echo "sonar.projectKey=org.sonarqube:$CI_PROJECT_NAME
+sonar.projectName=PHP :: ${CI_PROJECT_NAME}
+sonar.projectVersion=1.0
+
+sonar.language=php
+sonar.sources=./
+sonar.sourceEncoding=UTF-8
+#sonar.host.url=http://git.relipasoft.com:9101
+#sonar.gitlab.project_id=$CI_PROJECT_ID
+#sonar.analysis.mode=publish
+#sonar.issuesReport.console.enable=true
+#sonar.gitlab.commit_sha=$CI_BUILD_REF
+#sonar.gitlab.ref_name=$CI_BUILD_REF_NAME
+# Optional
+#sonar.tests=tests
+
+# To import the LCOV report
+#sonar.javascript.lcov.reportPath=report/lcov.dat" >> ./sonar-project.properties
+
+if [ ! -d tests ] ; then
+    mkdir tests
+fi
